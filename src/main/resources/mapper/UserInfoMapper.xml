@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.mapper.UserInfoMapper">
+	<select id="selectByUsername" parameterType="com.zte.model.UserInfo"
+		resultType="com.zte.model.UserInfo">
+
+		select * from user_info where username=#{username} and
+		password=#{password}
+	</select>
+
+	<select id="select" parameterType="com.zte.model.UserInfo"
+		resultType="com.zte.model.UserInfo">
+		select * from user_info
+	</select>
+	
+	<insert id="insert" parameterType="com.zte.model.UserInfo">
+		insert into user_info (username,password,usertype,enabled,realname,qq,email,tel) 
+		values (#{username},#{password},#{usertype},#{enabled},#{realname},#{qq},#{email},#{tel})
+	</insert>
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zte.mapper.UserRoleMapper">
+
+	<select id="findRoleByUid" parameterType="java.lang.Integer"
+		resultType="java.lang.String">
+
+		SELECT r.rolename FROM user_info u,user_role ur,role r
+		<where> 
+			u.id=ur.user_info_id AND ur.role_id=r.id AND u.id=#{id}
+		</where>
+	</select>
+	
+	<select  id="findMenuByUid" parameterType="java.lang.Integer"
+		resultType="java.lang.String">
+
+		SELECT m.menuname FROM
+		user_info u,
+		user_role ur,
+		role
+		r,role_menu
+		rm,menu m
+		<where> u.id=ur.user_info_id AND ur.role_id=r.id AND r.id=rm.role_id
+			AND
+			rm.menu_id=m.id AND u.id=#{id}
+		</where>
+
+	</select>
+
+</mapper>
